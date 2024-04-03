@@ -1,14 +1,15 @@
 
+const items = ['Cookies', 'Privacy']
+
 const Footer = () => {
    return (
       <footer className="mt-auto mb-8 ml-6">
          <ul>
-            <li>
-               <a href="#" className="text-[11px] hover:underline py-2">Cookies</a>
-            </li>
-            <li>
-               <a href="#" className="text-[11px] hover:underline py-2">Privacy</a>
-            </li>
+            {items.map((label) => (
+               <li key={label}>
+                  <a href="#" className="text-[11px] hover:underline py-2">{label}</a>
+               </li>
+            ))}
          </ul>
       </footer>
    )
