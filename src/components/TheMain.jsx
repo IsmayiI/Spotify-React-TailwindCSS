@@ -1,4 +1,3 @@
-import kaniiImg from "../imgs/6919ee38c2505ed21cce594bec9fb48f.1000x1000x1.png"
 import kanyeImg from "../imgs/9R3iDpMDwhQ.jpg"
 import tainyImg from "../imgs/96925dde76903dc734373047abc4c34c.1000x1000x1.jpg"
 import okgiorgioImg from "../imgs/artworks-SjTdhTrYeVh8-0-t500x500.jpg"
@@ -10,6 +9,7 @@ import wallowsImg from "../imgs/d6eaf4d3c38bb9e77ea8b53169bf0676.700x700x1.jpg"
 import khruangbinImg from "../imgs/8613c1245a72680007e0280d1f4ac661.1000x1000x1.jpg"
 import jamieImg from "../imgs/VtuZH953J4c.jpg"
 import nikkoImg from "../imgs/XspYMr72YHM.jpg"
+import Playlist from "./main/Playlist"
 
 const TheMain = () => {
    return (
@@ -28,66 +28,7 @@ const TheMain = () => {
                </div>
                <div
                   className="grid sm:grid-cols-playlists-mobile md:grid-cols-playlists-tablet lg:grid-cols-playlists-desktop gap-5">
-                  <a href="#" className="relative p-4 rounded-md hover:bg-[#191919] duration-200 group">
-                     <div className="mb-4 relative">
-                        <img src={kaniiImg} className="rounded shadow-lg" />
-                        <button
-                           className="h-10 w-10 rounded-full bg-[#1ED760] shadow-xl absolute right-1 bottom-1 flex justify-center
-                              items-center cursor-auto duration-300 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 hover:scale-105">
-                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
-                              stroke="currentColor" className="w-5 h-5">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                           </svg>
-                        </button>
-                     </div>
-                     <h3 className="mb-1 font-semibold">tell me</h3>
-                     <p className="text-sm text-[#9C9C9C] line-clamp-2">kanii, Riovaz & Nimstarr</p>
-                     <ul
-                        className="absolute top-14 left-16 z-10 divide-y divide-[#3e3e3e]
-                            bg-[#282828] text-[#eaeaea] text-sm p-1 rounded shadow-xl cursor-default hidden group-hover:block text-nowrap">
-                        <li>
-                           <button
-                              className=" w-full p-3 text-left hover:text-white hover:bg-[#3e3e3e] cursor-default">Add
-                              To
-                              Your
-                              Library</button>
-                        </li>
-                        <li className="relative">
-                           <button
-                              className="flex justify-between items-center w-full p-3 text-left hover:text-white hover:bg-[#3e3e3e] cursor-default">
-                              Share
-                              <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                 strokeWidth="1.5" stroke="currentColor">
-                                 <path strokeLinecap="round" strokeLinejoin="round"
-                                    d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                              </svg>
-                           </button>
-                           <ul
-                              className="absolute top-0 left-full bg-[#282828] text-[#eaeaea] text-sm p-1 rounded shadow-xl cursor-default">
-                              <li>
-                                 <button
-                                    className=" w-full p-3 text-left hover:text-white hover:bg-[#3e3e3e] cursor-default text-nowrap">
-                                    Copy link to playlist</button>
-                              </li>
-                              <li>
-                                 <button
-                                    className=" w-full p-3 text-left hover:text-white hover:bg-[#3e3e3e] cursor-default">
-                                    Embed playlist</button>
-                              </li>
-                           </ul>
-                        </li>
-                        <li>
-                           <button
-                              className=" w-full p-3 text-left hover:text-white hover:bg-[#3e3e3e] cursor-default">About
-                              recommendations</button>
-                        </li>
-                        <li>
-                           <button
-                              className=" w-full p-3 text-left hover:text-white hover:bg-[#3e3e3e] cursor-default">Open
-                              in Desktop app</button>
-                        </li>
-                     </ul>
-                  </a>
+                  <Playlist />
                   <a href="#" className="p-4 rounded-md hover:bg-[#191919] duration-200 group hidden sm:block">
                      <div className="mb-4 relative">
                         <img src={kanyeImg} className="rounded shadow-lg" />
