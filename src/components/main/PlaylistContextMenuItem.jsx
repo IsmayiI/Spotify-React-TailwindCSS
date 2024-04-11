@@ -1,5 +1,5 @@
 import { ChevronRightIcon } from '@heroicons/react/24/outline'
-import PlaylistContextSubmenu from "./PlaylistContextSubmenu"
+import PlaylistContextMenu from './PlaylistContextMenu'
 
 const PlaylistContextMenuItem = ({ label, subMenuItems }) => {
 
@@ -12,7 +12,10 @@ const PlaylistContextMenuItem = ({ label, subMenuItems }) => {
       classes = 'relative'
       btnClasses = `${btnClasses} flex justify-between items-center`
       icon = <ChevronRightIcon className="h-4 w-4" />
-      subMenu = <PlaylistContextSubmenu subMenuItems={subMenuItems} />
+      subMenu = (
+         <PlaylistContextMenu menuItems={subMenuItems}
+            classes="absolute top-0 left-full bg-[#282828] text-[#eaeaea] text-sm p-1 rounded shadow-xl cursor-default" />
+      )
    }
 
    return (
