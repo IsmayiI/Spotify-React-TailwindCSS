@@ -35,7 +35,7 @@ const TheMain = () => {
                </div>
                <div
                   className="grid sm:grid-cols-playlists-mobile md:grid-cols-playlists-tablet lg:grid-cols-playlists-desktop gap-5">
-                  <Playlist {...playlist} />
+                  <Playlist {...playlist} classes="relative p-4 rounded-md hover:bg-[#191919] duration-200 group" />
                   <a href="#" className="p-4 rounded-md hover:bg-[#191919] duration-200 group hidden sm:block">
                      <div className="mb-4 relative">
                         <img src={kanyeImg} className="rounded shadow-lg" />

@@ -28,19 +28,19 @@ const menuItems = [
    },
 ]
 
-const classes = `absolute top-14 left-16 z-10 divide-y divide-[#3e3e3e]
+const menuClasses = `absolute top-14 left-16 z-10 divide-y divide-[#3e3e3e]
 bg-[#282828] text-[#eaeaea] text-sm p-1 rounded shadow-xl cursor-default hidden group-hover:block text-nowrap`
 
-const Playlist = ({ title, descr, img }) => {
+const Playlist = ({ title, descr, img, classes }) => {
    return (
-      <a href="#" className="relative p-4 rounded-md hover:bg-[#191919] duration-200 group">
+      <a href="#" className={classes}>
          <div className="mb-4 relative">
             <PlaylistImg img={img} />
             <PlaylistBtnPlay />
          </div>
          <PlaylistTitle title={title} />
          <PlaylistDescr descr={descr} />
-         <PlaylistContextMenu menuItems={menuItems} classes={classes} />
+         <PlaylistContextMenu menuItems={menuItems} classes={menuClasses} />
       </a>
    )
 }
