@@ -1,4 +1,3 @@
-import kaniiImg from "../../imgs/6919ee38c2505ed21cce594bec9fb48f.1000x1000x1.png"
 
 import PlaylistBtnPlay from "./PlaylistBtnPlay"
 import PlaylistDescr from "./PlaylistDescr"
@@ -32,15 +31,15 @@ const menuItems = [
 const classes = `absolute top-14 left-16 z-10 divide-y divide-[#3e3e3e]
 bg-[#282828] text-[#eaeaea] text-sm p-1 rounded shadow-xl cursor-default hidden group-hover:block text-nowrap`
 
-const Playlist = () => {
+const Playlist = ({ title, descr, img }) => {
    return (
       <a href="#" className="relative p-4 rounded-md hover:bg-[#191919] duration-200 group">
          <div className="mb-4 relative">
-            <PlaylistImg img={kaniiImg} />
+            <PlaylistImg img={img} />
             <PlaylistBtnPlay />
          </div>
-         <PlaylistTitle />
-         <PlaylistDescr />
+         <PlaylistTitle title={title} />
+         <PlaylistDescr descr={descr} />
          <PlaylistContextMenu menuItems={menuItems} classes={classes} />
       </a>
    )

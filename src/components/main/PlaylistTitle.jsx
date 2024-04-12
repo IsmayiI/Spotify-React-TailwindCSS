@@ -1,7 +1,7 @@
 
-const PlaylistTitle = () => {
+const PlaylistTitle = ({ title }) => {
    return (
-      <h3 className="mb-1 font-semibold">tell me</h3>
+      <h3 className="mb-1 font-semibold">{title}</h3>
    )
 }
 

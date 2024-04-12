@@ -1,4 +1,5 @@
 import kanyeImg from "../imgs/9R3iDpMDwhQ.jpg"
+import kaniiImg from "../imgs/6919ee38c2505ed21cce594bec9fb48f.1000x1000x1.png"
 import tainyImg from "../imgs/96925dde76903dc734373047abc4c34c.1000x1000x1.jpg"
 import okgiorgioImg from "../imgs/artworks-SjTdhTrYeVh8-0-t500x500.jpg"
 import fredImg from "../imgs/HHV96HRA2VY.jpg"
@@ -10,6 +11,12 @@ import khruangbinImg from "../imgs/8613c1245a72680007e0280d1f4ac661.1000x1000x1.
 import jamieImg from "../imgs/VtuZH953J4c.jpg"
 import nikkoImg from "../imgs/XspYMr72YHM.jpg"
 import Playlist from "./main/Playlist"
+
+const playlist = {
+   title: 'tell me',
+   descr: 'kanii, Riovaz & Nimstarr',
+   img: kaniiImg
+}
 
 const TheMain = () => {
    return (
@@ -28,7 +35,7 @@ const TheMain = () => {
                </div>
                <div
                   className="grid sm:grid-cols-playlists-mobile md:grid-cols-playlists-tablet lg:grid-cols-playlists-desktop gap-5">
-                  <Playlist />
+                  <Playlist {...playlist} />
                   <a href="#" className="p-4 rounded-md hover:bg-[#191919] duration-200 group hidden sm:block">
                      <div className="mb-4 relative">
                         <img src={kanyeImg} className="rounded shadow-lg" />
