@@ -33,7 +33,7 @@ bg-[#282828] text-[#eaeaea] text-sm p-1 rounded shadow-xl cursor-default hidden 
 
 const Playlist = ({ title, descr, img, classes }) => {
    return (
-      <a href="#" className={classes}>
+      <a href="#" className={`relative p-4 rounded-md hover:bg-[#191919] duration-200 group ${classes}`}>
          <div className="mb-4 relative">
             <PlaylistImg img={img} />
             <PlaylistBtnPlay />

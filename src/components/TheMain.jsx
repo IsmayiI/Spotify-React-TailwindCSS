@@ -12,11 +12,71 @@ import jamieImg from "../imgs/VtuZH953J4c.jpg"
 import nikkoImg from "../imgs/XspYMr72YHM.jpg"
 import Playlist from "./main/Playlist"
 
-const playlist = {
-   title: 'tell me',
-   descr: 'kanii, Riovaz & Nimstarr',
-   img: kaniiImg
-}
+const playlists = [
+   {
+      id: crypto.randomUUID(),
+      title: 'tell me',
+      descr: 'kanii, Riovaz & Nimstarr',
+      img: kaniiImg,
+      classes: ""
+   },
+   {
+      id: crypto.randomUUID(),
+      title: 'VULTURES 1',
+      descr: 'Kanye West',
+      img: kanyeImg,
+      classes: "hidden sm:block"
+   },
+   {
+      id: crypto.randomUUID(),
+      title: 'roadhead',
+      descr: 'Tainy',
+      img: tainyImg,
+      classes: "hidden lg:block"
+   },
+   {
+      id: crypto.randomUUID(),
+      title: 'ok',
+      descr: 'okgiorgio',
+      img: okgiorgioImg,
+      classes: "hidden xl:block"
+   },
+   {
+      id: crypto.randomUUID(),
+      title: 'tell me',
+      descr: 'kanii, Riovaz & Nimstarr',
+      img: kaniiImg,
+      classes: "hidden 2xl:block"
+   },
+   {
+      id: crypto.randomUUID(),
+      title: 'VULTURES 1',
+      descr: 'Kanye West',
+      img: kanyeImg,
+      classes: "hidden 3xl:block"
+   },
+   {
+      id: crypto.randomUUID(),
+      title: 'roadhead',
+      descr: 'Tainy',
+      img: tainyImg,
+      classes: "hidden 4xl:block"
+   },
+   {
+      id: crypto.randomUUID(),
+      title: 'ok',
+      descr: 'okgiorgio',
+      img: okgiorgioImg,
+      classes: "hidden 5xl:block"
+   },
+   {
+      id: crypto.randomUUID(),
+      title: 'VULTURES 1',
+      descr: 'Kanye West',
+      img: kanyeImg,
+      classes: "hidden 6xl:block"
+   },
+]
 
 const TheMain = () => {
    return (
@@ -35,8 +95,11 @@ const TheMain = () => {
                </div>
                <div
                   className="grid sm:grid-cols-playlists-mobile md:grid-cols-playlists-tablet lg:grid-cols-playlists-desktop gap-5">
-                  <Playlist {...playlist} classes="relative p-4 rounded-md hover:bg-[#191919] duration-200 group" />
-                  <a href="#" className="p-4 rounded-md hover:bg-[#191919] duration-200 group hidden sm:block">
+                  {playlists.map(playlist => (
+                     <Playlist key={playlist.id}  {...playlist} />
+                  ))}
+
+                  {/* <a href="#" className="p-4 rounded-md hover:bg-[#191919] duration-200 group hidden sm:block">
                      <div className="mb-4 relative">
                         <img src={kanyeImg} className="rounded shadow-lg" />
                         <button
@@ -155,7 +218,7 @@ const TheMain = () => {
                      </div>
                      <h3 className="mb-1 font-semibold">VULTURES 1</h3>
                      <p className="text-sm text-[#9C9C9C] line-clamp-2">Kanye West</p>
-                  </a>
+                  </a> */}
                </div>
 
                <div className="flex flex-wrap justify-between gap-x-6 items-end mb-[18px]">
