@@ -42,6 +42,10 @@ const Playlist = ({ title, descr, img, classes }) => {
       setIsContextMenuOpen(true)
    }
 
+   const closeContextMenu = () => {
+      setIsContextMenuOpen(false)
+   }
+
    return (
       <a
          href="#"
@@ -53,7 +57,7 @@ const Playlist = ({ title, descr, img, classes }) => {
          </div>
          <PlaylistTitle title={title} />
          <PlaylistDescr descr={descr} />
-         {isContextMenuOpen && <PlaylistContextMenu menuItems={menuItems} classes={menuClasses} />}
+         {isContextMenuOpen && <PlaylistContextMenu onClose={closeContextMenu} menuItems={menuItems} classes={menuClasses} />}
       </a>
    )
 }
