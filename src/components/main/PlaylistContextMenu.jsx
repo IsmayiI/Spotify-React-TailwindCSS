@@ -1,18 +1,26 @@
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import PlaylistContextMenuItem from "./PlaylistContextMenuItem"
 
-const PlaylistContextMenu = ({ menuItems, classes, onClose }) => {
+const PlaylistContextMenu = ({ menuItems, classes, onClose: handleClose }) => {
+
+   const menuRef = useRef(null)
 
    useEffect(() => {
-      document.addEventListener('mousedown', onClose)
+      function handleClickAway(e) {
+         if (!menuRef.current.contains(e.target)) {
+            handleClose()
+         }
+      }
+
+      document.addEventListener('mousedown', handleClickAway)
 
       return () => {
-         document.removeEventListener('mousedown', onClose)
+         document.removeEventListener('mousedown', handleClickAway)
       }
    })
 
    return (
-      <ul className={classes}>
+      <ul ref={menuRef} className={classes}>
          {menuItems.map(({ label, subMenuItems }) => (
             <PlaylistContextMenuItem key={label} subMenuItems={subMenuItems} label={label} />
          ))}
