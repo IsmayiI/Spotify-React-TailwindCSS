@@ -30,11 +30,13 @@ const menuItems = [
 ]
 
 const menuClasses = `absolute top-14 left-16 z-10 divide-y divide-[#3e3e3e]
-bg-[#282828] text-[#eaeaea] text-sm p-1 rounded shadow-xl cursor-default text-nowrap`
+ text-[#eaeaea] bg-[#282828] text-sm p-1 rounded shadow-xl cursor-default text-nowrap`
 
 const Playlist = ({ title, descr, img, classes }) => {
 
    const [isContextMenuOpen, setIsContextMenuOpen] = useState(false)
+
+   const bgClasses = isContextMenuOpen ? 'bg-[#191919]' : ''
 
    const openContextMenu = (e) => {
       e.preventDefault()
@@ -49,7 +51,7 @@ const Playlist = ({ title, descr, img, classes }) => {
    return (
       <a
          href="#"
-         className={`relative p-4 rounded-md hover:bg-[#191919] duration-200 group ${classes}`}
+         className={`relative p-4 rounded-md  hover:bg-[#191919] duration-200 group ${classes} ${bgClasses}`}
          onContextMenu={openContextMenu} >
          <div className="mb-4 relative">
             <PlaylistImg img={img} />

@@ -6,6 +6,8 @@ const PlaylistContextMenu = ({ menuItems, classes, onClose: handleClose }) => {
    const menuRef = useRef(null)
 
    useEffect(() => {
+      if (!handleClose) return
+
       function handleClickAway(e) {
          if (!menuRef.current.contains(e.target)) {
             handleClose()
