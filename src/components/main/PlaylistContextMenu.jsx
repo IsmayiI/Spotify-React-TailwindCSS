@@ -12,10 +12,19 @@ const PlaylistContextMenu = ({ menuItems, classes, onClose: handleClose }) => {
          }
       }
 
+      function handleEsc(e) {
+         if (e.keyCode === 27) {
+            handleClose()
+         }
+      }
+
       document.addEventListener('mousedown', handleClickAway)
+      document.addEventListener('keydown', handleEsc)
 
       return () => {
          document.removeEventListener('mousedown', handleClickAway)
+         document.removeEventListener('keydown', handleEsc)
+
       }
    })
 
