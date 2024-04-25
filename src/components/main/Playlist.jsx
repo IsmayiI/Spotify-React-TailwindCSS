@@ -4,7 +4,7 @@ import PlaylistDescr from "./PlaylistDescr"
 import PlaylistImg from "./PlaylistImg"
 import PlaylistTitle from "./PlaylistTitle"
 import PlaylistContextMenu from "./PlaylistContextMenu"
-import { useEffect, useRef, useState } from "react"
+import { useLayoutEffect, useRef, useState } from "react"
 
 const menuItems = [
    {
@@ -63,12 +63,11 @@ const Playlist = ({ title, descr, img, classes }) => {
       setIsContextMenuOpen(false)
    }
 
-
-   useEffect(() => {
+   useLayoutEffect(() => {
       if (isContextMenuOpen) {
          updateContextMenuPosition()
       }
-   })
+   }, [isContextMenuOpen])
 
 
    return (
