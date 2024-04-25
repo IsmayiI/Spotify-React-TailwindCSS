@@ -4,7 +4,7 @@ import PlaylistDescr from "./PlaylistDescr"
 import PlaylistImg from "./PlaylistImg"
 import PlaylistTitle from "./PlaylistTitle"
 import PlaylistContextMenu from "./PlaylistContextMenu"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const menuItems = [
    {
@@ -29,17 +29,32 @@ const menuItems = [
    },
 ]
 
-const menuClasses = `absolute top-14 left-16 z-10 divide-y divide-[#3e3e3e]
+const menuClasses = `fixed z-10 divide-y divide-[#3e3e3e]
  text-[#eaeaea] bg-[#282828] text-sm p-1 rounded shadow-xl cursor-default text-nowrap`
+
+
+const clickPosition = { x: null, y: null }
+
 
 const Playlist = ({ title, descr, img, classes }) => {
 
    const [isContextMenuOpen, setIsContextMenuOpen] = useState(false)
 
+   const contextMenuRef = useRef(null)
+
    const bgClasses = isContextMenuOpen ? 'bg-[#191919]' : ''
+
+   const updateContextMenuPosition = () => {
+      contextMenuRef.current.style.top = `${clickPosition.y}px`
+      contextMenuRef.current.style.left = `${clickPosition.x}px`
+   }
 
    const openContextMenu = (e) => {
       e.preventDefault()
+
+      clickPosition.x = e.clientX
+      clickPosition.y = e.clientY
+
 
       setIsContextMenuOpen(true)
    }
@@ -47,6 +62,14 @@ const Playlist = ({ title, descr, img, classes }) => {
    const closeContextMenu = () => {
       setIsContextMenuOpen(false)
    }
+
+
+   useEffect(() => {
+      if (isContextMenuOpen) {
+         updateContextMenuPosition()
+      }
+   })
+
 
    return (
       <a
@@ -59,7 +82,7 @@ const Playlist = ({ title, descr, img, classes }) => {
          </div>
          <PlaylistTitle title={title} />
          <PlaylistDescr descr={descr} />
-         {isContextMenuOpen && <PlaylistContextMenu onClose={closeContextMenu} menuItems={menuItems} classes={menuClasses} />}
+         {isContextMenuOpen && <PlaylistContextMenu ref={contextMenuRef} onClose={closeContextMenu} menuItems={menuItems} classes={menuClasses} />}
       </a>
    )
 }
