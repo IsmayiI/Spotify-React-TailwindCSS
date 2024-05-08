@@ -44,9 +44,31 @@ const Playlist = ({ title, descr, img, classes, toggleScrolling }) => {
 
    const bgClasses = isContextMenuOpen ? 'bg-[#191919]' : ''
 
+   const updateContextHorizontalPosition = () => {
+      const menuWidth = contextMenuRef.current.offsetWidth
+      const shouldMoveLeft = menuWidth > window.innerWidth - clickPosition.x
+
+      console.log(menuWidth);
+      console.log(window.innerWidth,clickPosition.x );
+
+      contextMenuRef.current.style.left = shouldMoveLeft
+       ? `${clickPosition.x - menuWidth}px`
+       : `${clickPosition.x}px`
+   }
+
+   
+   const updateContextVerticalPosition = () => {
+      const menuHeight = contextMenuRef.current.offsetHeight
+      const shouldMoveUp = menuHeight > window.innerHeight - clickPosition.y
+
+      contextMenuRef.current.style.top = shouldMoveUp
+       ? `${clickPosition.y - menuHeight}px`
+       : `${clickPosition.y}px`
+   }
+
    const updateContextMenuPosition = () => {
-      contextMenuRef.current.style.top = `${clickPosition.y}px`
-      contextMenuRef.current.style.left = `${clickPosition.x}px`
+      updateContextHorizontalPosition()
+      updateContextVerticalPosition()
    }
 
    const openContextMenu = (e) => {
