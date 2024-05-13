@@ -48,9 +48,6 @@ const Playlist = ({ title, descr, img, classes, toggleScrolling }) => {
       const menuWidth = contextMenuRef.current.offsetWidth
       const shouldMoveLeft = menuWidth > window.innerWidth - clickPosition.x
 
-      console.log(menuWidth);
-      console.log(window.innerWidth,clickPosition.x );
-
       contextMenuRef.current.style.left = shouldMoveLeft
        ? `${clickPosition.x - menuWidth}px`
        : `${clickPosition.x}px`
