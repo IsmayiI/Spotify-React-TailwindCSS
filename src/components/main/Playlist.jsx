@@ -18,7 +18,7 @@ const menuItems = [
          },
          {
             label: 'Embed playlist'
-         }
+         },
       ]
    },
    {

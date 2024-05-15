@@ -4,24 +4,37 @@ import { useRef, useState } from 'react'
 
 const PlaylistContextMenuItem = ({ label, subMenuItems }) => {
    const [isMenuOpen, setIsMenuOpen] = useState(false)
-   const [menuPositionClass, setMenuPositionClass] = useState('left-full')
+   const [menuPositionXClass, setMenuPositionXClass] = useState('left-full')
+   const [menuPositionYClass, setMenuPositionYClass] = useState('bottom-0')
    const menuItemRef = useRef(null)
 
    const getMenuPositionClass = () => {
       const menuItem = menuItemRef.current
+
       const menuWidth = menuItem.offsetWidth 
+      const menuHeight = menuItem.offsetHeight * subMenuItems.length
       const windowWidth = window.innerWidth
+      const windowHeight = window.innerHeight
 
-      const menuItemEndCoordinate = menuItem.getBoundingClientRect().right
 
-      const shouldMoveMenuLeft = menuWidth > windowWidth - menuItemEndCoordinate
+      const menuItemCoordX = menuItem.getBoundingClientRect().right
 
-      return shouldMoveMenuLeft ? 'right-full' : 'left-full'
+      const menuItemCoordY = menuItem.getBoundingClientRect().bottom
+
+      const shouldMoveMenuLeft = menuWidth > windowWidth - menuItemCoordX
+      const shouldMoveMenuTop = menuHeight > windowHeight - menuItemCoordY
+
+      return {
+         x: shouldMoveMenuLeft ? 'right-full' : 'left-full',
+         y: shouldMoveMenuTop ? 'bottom-0' : 'top-0'
+      }
    }
 
    const openMenu = () => {
       setIsMenuOpen(true)
-      setMenuPositionClass(getMenuPositionClass())
+      const coord = getMenuPositionClass()
+      setMenuPositionXClass(coord.x)
+      setMenuPositionYClass(coord.y)
    } 
 
    const closeMenu = () => {
@@ -39,7 +52,7 @@ const PlaylistContextMenuItem = ({ label, subMenuItems }) => {
             </button>
             {isMenuOpen && (
             <PlaylistContextMenu menuItems={subMenuItems}
-               classes={`bg-[#282828] text-[#eaeaea] text-sm p-1 rounded shadow-xl cursor-default absolute top-0 ${menuPositionClass}`} />
+               classes={`bg-[#282828] text-[#eaeaea] text-sm p-1 rounded shadow-xl cursor-default absolute ${menuPositionYClass} ${menuPositionXClass}`} />
                )}
             
          </li>
