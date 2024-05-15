@@ -3,9 +3,10 @@ import PlaylistContextMenu from './PlaylistContextMenu'
 import { useRef, useState } from 'react'
 
 const PlaylistContextMenuItem = ({ label, subMenuItems }) => {
-   const [isMenuOpen, setIsMenuOpen] = useState(false)
-   const [menuPositionXClass, setMenuPositionXClass] = useState('left-full')
-   const [menuPositionYClass, setMenuPositionYClass] = useState('bottom-0')
+   const [menuState, setMenuState] = useState({
+      isOpen: false,
+      positionClasses: ''
+   })
    const menuItemRef = useRef(null)
 
    const getMenuPositionClass = () => {
@@ -31,14 +32,18 @@ const PlaylistContextMenuItem = ({ label, subMenuItems }) => {
    }
 
    const openMenu = () => {
-      setIsMenuOpen(true)
-      const coord = getMenuPositionClass()
-      setMenuPositionXClass(coord.x)
-      setMenuPositionYClass(coord.y)
+      const {x, y} = getMenuPositionClass()
+      setMenuState({
+         isOpen: true,
+         positionClasses: `${x} ${y}`
+      })
    } 
 
    const closeMenu = () => {
-      setIsMenuOpen(false)
+      setMenuState({
+         isOpen: false,
+         positionClasses: ''
+      })
    }
 
    let btnClasses = 'w-full p-3 text-left hover:text-white hover:bg-[#3e3e3e] cursor-default text-nowrap'
@@ -50,9 +55,9 @@ const PlaylistContextMenuItem = ({ label, subMenuItems }) => {
                {label}
                <ChevronRightIcon className="h-4 w-4" />
             </button>
-            {isMenuOpen && (
+            {menuState.isOpen && (
             <PlaylistContextMenu menuItems={subMenuItems}
-               classes={`bg-[#282828] text-[#eaeaea] text-sm p-1 rounded shadow-xl cursor-default absolute ${menuPositionYClass} ${menuPositionXClass}`} />
+               classes={`bg-[#282828] text-[#eaeaea] text-sm p-1 rounded shadow-xl cursor-default absolute ${menuState.positionClasses}`} />
                )}
             
          </li>
