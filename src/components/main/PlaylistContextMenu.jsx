@@ -4,6 +4,16 @@ import PlaylistContextMenuItemWithSubmenu from "./PlaylistContextMenuItemWithSub
 
 const PlaylistContextMenu = ({ menuItems, classes, onClose: handleClose }, ref) => {
 
+   let closePreviousSubmenu = null
+
+   const closePreviousSubmenuIfOpen = (closeSubmenu = null) => {
+      if (closePreviousSubmenu) {
+         closePreviousSubmenu()
+      }
+
+      closePreviousSubmenu = closeSubmenu
+   }
+
    useEffect(() => {
       if (!handleClose) return
 
@@ -33,10 +43,10 @@ const PlaylistContextMenu = ({ menuItems, classes, onClose: handleClose }, ref) 
       <ul ref={ref} className={classes}>
          {menuItems.map(({ label, subMenuItems }) => {
             if (subMenuItems) {
-               return <PlaylistContextMenuItemWithSubmenu key={label} subMenuItems={subMenuItems} label={label} />
+               return <PlaylistContextMenuItemWithSubmenu onMouseEnter={closePreviousSubmenuIfOpen} key={label} subMenuItems={subMenuItems} label={label} />
             }
 
-            return <PlaylistContextMenuItem key={label} label={label} />
+            return <PlaylistContextMenuItem onMouseEnter={closePreviousSubmenuIfOpen} key={label} label={label} />
 
          })}
       </ul>
