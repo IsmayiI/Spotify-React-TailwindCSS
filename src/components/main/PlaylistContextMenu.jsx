@@ -1,5 +1,6 @@
 import { forwardRef, useEffect } from "react"
 import PlaylistContextMenuItem from "./PlaylistContextMenuItem"
+import PlaylistContextMenuItemWithSubmenu from "./PlaylistContextMenuItemWithSubmenu"
 
 const PlaylistContextMenu = ({ menuItems, classes, onClose: handleClose }, ref) => {
 
@@ -30,9 +31,14 @@ const PlaylistContextMenu = ({ menuItems, classes, onClose: handleClose }, ref) 
 
    return (
       <ul ref={ref} className={classes}>
-         {menuItems.map(({ label, subMenuItems }) => (
-            <PlaylistContextMenuItem key={label} subMenuItems={subMenuItems} label={label} />
-         ))}
+         {menuItems.map(({ label, subMenuItems }) => {
+            if (subMenuItems) {
+               return <PlaylistContextMenuItemWithSubmenu key={label} subMenuItems={subMenuItems} label={label} />
+            }
+
+            return <PlaylistContextMenuItem key={label} label={label} />
+
+         })}
       </ul>
    )
 }
