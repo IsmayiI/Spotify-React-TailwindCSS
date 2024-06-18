@@ -8,7 +8,7 @@ const PlaylistContextMenuItemWithSubmenu = ({ label, subMenuItems, onMouseEnter:
       positionClasses: ''
    })
    const menuItemRef = useRef(null)
-   let closeMenuTimer = null
+   const closeMenuTimer = useRef(null)
 
    const getMenuPositionClass = () => {
       const menuItem = menuItemRef.current
@@ -35,11 +35,6 @@ const PlaylistContextMenuItemWithSubmenu = ({ label, subMenuItems, onMouseEnter:
    const openMenu = () => {
       closePreviousSubmenuIfOpen(startCloseMenuTimer)
 
-      if (closeMenuTimer) {
-         stopCloseMenuTimer()
-
-         return
-      }
       const { x, y } = getMenuPositionClass()
       setMenuState({
          isOpen: true,
@@ -55,11 +50,11 @@ const PlaylistContextMenuItemWithSubmenu = ({ label, subMenuItems, onMouseEnter:
    }
 
    const startCloseMenuTimer = () => {
-      closeMenuTimer = setTimeout(closeMenu, 1000)
+      closeMenuTimer.current = setTimeout(closeMenu, 1000)
    }
 
    const stopCloseMenuTimer = () => {
-      clearTimeout(closeMenuTimer)
+      clearTimeout(closeMenuTimer.current)
    }
 
    useEffect(() => stopCloseMenuTimer)
